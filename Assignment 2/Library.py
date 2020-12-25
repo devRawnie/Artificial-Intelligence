@@ -4,16 +4,18 @@ from pade.core.agent import Agent
 from pade.acl.aid import AID
 from pade.acl.messages import ACLMessage
 
-class Student(dict):
-    def __init__(self, name, rollnumber):
-        super().__init__(self, name=name, rollnumber=rollnumber)
+class Book:
+    def __init__(self, name):
+        self.name = name
 
+    def getName(self):
+        return self.name
 
 class QueryAgent(Agent):
     def __init__(self, aid, receiver_agent, message):
         super().__init__(aid)
         self.receiver_agent = receiver_agent
-        self.message = title
+        self.message = message
 
 
     def displayBook(self, books):
@@ -54,8 +56,8 @@ class LibraryAgent(Agent):
 
     def react(self, message):
         super().react(message)
-        display_message(self.aid.localname, 'Query received from {} for book with title "{}"'.format(message.sender.name, message.content))
-        book = findbook(message.content)
+        display_message(self.aid.localname, 'Query received from {} for book with title "{}"'.format(message.sender.name, message.content.getName()))
+        book = findbook(message.content.getName())
         self.send_message(message.sender.name, book)
 
     def send_message(self, receiver_agent, book):
@@ -79,7 +81,8 @@ if __name__ == '__main__':
     libraryAgentAID = AID(name='library_agent@localhost:{}'.format(30001))
     libraryAgent = LibraryAgent(libraryAgentAID)
     title = input("Enter the title of book you want to search in the library: ")
-    queryAgent = QueryAgent(AID(name='query_agent@localhost:{}'.format(30000)), libraryAgentAID, message=title)
+    book = Book(title)
+    queryAgent = QueryAgent(AID(name='query_agent@localhost:{}'.format(30000)), libraryAgentAID, message=book)
     agents.append(queryAgent)
     agents.append(libraryAgent)
 
