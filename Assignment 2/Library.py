@@ -4,9 +4,6 @@ from pade.core.agent import Agent
 from pade.acl.aid import AID
 from pade.acl.messages import ACLMessage
 
-class Student(dict):
-    def __init__(self, name, rollnumber):
-        super().__init__(self, name=name, rollnumber=rollnumber)
 
 
 class QueryAgent(Agent):
