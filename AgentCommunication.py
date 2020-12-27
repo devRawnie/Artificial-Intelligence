@@ -2,7 +2,7 @@ from pade.misc.utility import display_message, start_loop
 from pade.core.agent import Agent
 from pade.acl.aid import AID
 from pade.acl.messages import ACLMessage
-
+ 
 
 class SenderAgent(Agent):
     def __init__(self, aid, receiver_agent):
