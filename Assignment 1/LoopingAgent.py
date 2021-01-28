@@ -5,7 +5,7 @@ from pade.misc.utility import start_loop
 
 class LoopBehaviour(Behaviour):
     def __init__(self, agent):
-        super().__init__(agent,)
+        super().__init__(agent)
         self.count = 0
     
     def on_start(self):
