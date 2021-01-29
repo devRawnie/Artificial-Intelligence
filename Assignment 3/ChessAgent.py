@@ -13,13 +13,14 @@ class ChessBehaviour(Behaviour):
 
     def on_start(self):
         super().on_start()
-        choice = int(input("Press 1 to play\nPress 0 to exit\n: "))
-        if choice == 1:
-            self.object.play()
-        elif choice == 0:
-            return
-        else:
-            print("Invalid choice")
+        while True:
+            choice = int(input("Press 1 to play\nPress 0 to exit\n: "))
+            if choice == 1:
+                self.object.play()
+            elif choice == 0:
+                return
+            else:
+                print("Invalid choice")
 
 class ChessAgent(Agent):
     def __init__(self, aid):

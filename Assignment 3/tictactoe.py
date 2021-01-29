@@ -198,6 +198,3 @@ class TicTacToe:
                     print("\nWinner: %s" % result)
                 return 0
             sleep(1)
-
-ob = TicTacToe()
-ob.play()
