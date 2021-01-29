@@ -3,21 +3,13 @@ from pade.core.agent import Agent
 from pade.acl.aid import AID
 from pade.misc.utility import start_loop, display_message
 from tictactoe import TicTacToe
-from random import choice
 
-class ChessAI(TicTacToe):
-    def __init__(self):
-        super().__init__()
-    
-    def wait_for_computer(self):
-        randomChoice = choice([*self.available])
-        return randomChoice
 
 class ChessBehaviour(Behaviour):
     def __init__(self, agent):
         super().__init__(agent)
         self.count = 0
-        self.object = ChessAI()
+        self.object = TicTacToe()
 
     def on_start(self):
         super().on_start()
