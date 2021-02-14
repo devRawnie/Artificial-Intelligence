@@ -54,7 +54,7 @@ def is_board_full():
 def display_board():
         print("\nBOARD:")
         for i in range(3):
-            print(game_board[i], sep=" | ")
+            print(*game_board[i], sep=" | ")
 
 def update_board(pos, move):
     # Updates the board, with the current played move

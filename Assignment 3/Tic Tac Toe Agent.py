@@ -48,6 +48,7 @@ class ComputerAgent(Agent):
         available[pos] = False
         update_board(lookup[pos], self.move)
         # Check for winner
+        display_board()
         result = check_winner()
         if result is not None:
             if result == "TIE!!":
@@ -89,6 +90,7 @@ class HumanAgent(Agent):
         self.move = MOVE_X
 
     def play_move(self):
+        display_message(self.aid.localname, "Enter a spot for your move: ")
         count = 0
         for i in range(3):
             for j in range(3):
@@ -104,7 +106,6 @@ class HumanAgent(Agent):
                     else:
                         print(game_board[i][j])
 
-        display_message(self.aid.localname, "Enter a spot for your move: " )
         move = int(input(""))
 
         if move < 1 or move > 9:
