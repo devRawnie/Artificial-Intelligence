@@ -25,7 +25,7 @@ class ComputerAgent(Agent):
         self.move = O
 
     def play_move(self):
-        optimal = minimax_helper(game_board, self.move)
+        optimal = minimax_helper(game_board, self.move, -2, +2)
         for key in lookup.keys():
             if lookup[key] == optimal[0]:
                 return key

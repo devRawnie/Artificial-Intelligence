@@ -90,7 +90,7 @@ def utility(board):
         return -1
 
 
-def minimax_helper(board, p):
+def minimax_helper(board, p, alpha, beta):
     if terminal(board):
         return [None, utility(board)]
 
@@ -100,20 +100,26 @@ def minimax_helper(board, p):
         max_val = -2
         for move in possible_moves:
             board[move[0]][move[1]] = p
-            res = minimax_helper(board, O)
+            res = minimax_helper(board, O, alpha, beta)
             board[move[0]][move[1]] = EMPTY
             if res[1] > max_val:
                 max_val = res[1]
                 optimal = move
+            alpha = max(alpha, max_val)
+            if alpha >= beta:
+                break
         return [optimal, max_val]
     else:
         min_val = 2
         for move in possible_moves:
             board[move[0]][move[1]] = p
-            res = minimax_helper(board, X)
+            res = minimax_helper(board, X, alpha, beta)
             board[move[0]][move[1]] = EMPTY
             if res[1] < min_val:
                 min_val = res[1]
                 optimal = move
+            beta = min(beta, min_val)
+            if beta <= alpha:
+                break
         return [optimal, min_val]
         
