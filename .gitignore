@@ -3,3 +3,5 @@
 *.jpeg
 *cache*
 *.zip
+*.pyc
+.idea/**
