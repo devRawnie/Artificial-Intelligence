@@ -2,7 +2,6 @@ from pade.misc.utility import display_message
 from pade.core.agent import Agent
 from pade.acl.aid import AID
 from pade.acl.messages import ACLMessage
-from json import dumps
 
 class ChatAgent(Agent):
     receiver_agent=None
@@ -12,7 +11,7 @@ class ChatAgent(Agent):
             self.receiver_agent = receiver_agent
     
     def chat(self, receiver=None):
-        display_message(self.aid.localname, ':- ', "red", newline=False)
+        display_message(self.aid.localname, ' (Type your message):- ', "red", newline=False)
         message = input()
         if message=="q" or message=="Q":
             return
@@ -21,6 +20,7 @@ class ChatAgent(Agent):
 
     def react(self, message):
         super().react(message)
+        print("\nReceived Message\n")
         display_message(message.sender.name, ': "{}"\n'.format(message.content))
         if self.receiver_agent is not None:
             self.chat()
