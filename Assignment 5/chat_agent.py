@@ -43,8 +43,6 @@ class ChatAgent(Agent):
         self.add_all_agents(message.receivers)
         message.set_content(text)        
         self.send(message)
-        # if self.receiver_agent is not None:
-        #     self.chat()
 
     def add_all_agents(self, receivers):
         for receiver in receivers:
